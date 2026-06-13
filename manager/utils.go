@@ -69,7 +69,7 @@ func ParseKlineRecord(symbol string, interval, transformInterval types.Interval,
 		return nil, fmt.Errorf("col5(Volume): %w", err)
 	}
 	transformFlag := interval != transformInterval
-	intervalMs := utils.INTERVAL_MS[transformInterval]
+	intervalMs := types.INTERVAL_MS[transformInterval]
 	if !transformFlag || openTime%intervalMs == 0 {
 		newKline := &types.Kline{
 			Symbol:     symbol,
@@ -133,7 +133,7 @@ func ParseTradeRecord(symbol string, interval types.Interval, rec []string, klin
 		return nil, fmt.Errorf("col2(Qty): %w", err)
 	}
 
-	intervalMs := utils.INTERVAL_MS[interval]
+	intervalMs := types.INTERVAL_MS[interval]
 	if kline == nil || kline.CloseTime < tradeTime {
 		startMs := utils.TruncateEpochMillis(tradeTime, time.Duration(intervalMs)*time.Millisecond)
 		startS := startMs / 1000

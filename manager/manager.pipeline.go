@@ -16,7 +16,6 @@ func mergeSourceResult(result *ManagerSourceResult, v *sourceResult) {
 	}
 }
 
-// Second Try
 func (m *Manager) PipelineStageFactory(ctx context.Context) pipeline.ProcessStage[*ManagerSourceRequest, *pipeline.RoutingTable[types.Interval, *types.Kline]] {
 	return pipeline.MapStageFactory(
 		func(srcreq *ManagerSourceRequest) *pipeline.RoutingTable[types.Interval, *types.Kline] {

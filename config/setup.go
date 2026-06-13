@@ -366,6 +366,7 @@ func SetupCache(market int32, sqlUrl string) *types.SymbolsCache {
 	return sc
 }
 
+/*
 func warmupAlertFn(url string) (alerts types.AlertsGet) {
 	fmt.Println("Reading warmup alerts")
 	client := &http.Client{
@@ -393,6 +394,7 @@ func warmupAlertFn(url string) (alerts types.AlertsGet) {
 	}
 	return
 }
+*/
 
 /////////////////////////////////////////////////////////
 //										Setup Utils

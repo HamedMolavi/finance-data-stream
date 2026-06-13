@@ -51,32 +51,3 @@ type Kline struct {
 	Open     float64 `json:"o,omitempty"`
 	IsClosed bool    `json:"x,omitempty"`
 }
-
-type NobitexSocketKline struct {
-	T int64   `json:"t"` // "t": 1731852900 seconds
-	O float64 `json:"o"` // "o": 6240000001.0,
-	H float64 `json:"h"` // "h": 6250000000.0,
-	L float64 `json:"l"` // "l": 6238000000.0,
-	C float64 `json:"c"` // "c": 6238031033.0,
-	V float64 `json:"v"` // "v": 1.26
-}
-type NobitexApiKline struct {
-	Status string    `json:"s"`
-	T      []int64   `json:"t"`
-	O      []float64 `json:"o"`
-	H      []float64 `json:"h"`
-	L      []float64 `json:"l"`
-	C      []float64 `json:"c"`
-	V      []float64 `json:"v"`
-}
-
-type FarazApiKline struct {
-	Result struct {
-		O []float64 `json:"o"`
-		H []float64 `json:"h"`
-		L []float64 `json:"l"`
-		C []float64 `json:"c"`
-		V []float64 `json:"v"`
-		T []int64   `json:"t"`
-	}
-}

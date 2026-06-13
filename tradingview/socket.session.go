@@ -117,8 +117,8 @@ func (socket *Socket) SessionStageFactory(symbol types.Symbol, interval types.In
 						Low:        candleData[3],
 						Close:      candleData[4],
 						Volume:     v,
-						CloseTime:  startTime + utils.INTERVAL_MS[interval],
-						CloseTimeS: startTimeS + utils.INTERVAL_S_64[interval],
+						CloseTime:  startTime + types.INTERVAL_MS[interval],
+						CloseTimeS: startTimeS + types.INTERVAL_S_64[interval],
 						IsClosed:   true,
 					}
 					if kline.StartTime > 0 { //originalStartTime

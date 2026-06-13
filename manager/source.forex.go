@@ -46,7 +46,7 @@ func WouldYouFuckMe(request *ForexSourceRequest) *pipeline.RoutingTable[types.In
 	if err := socket.Authorize(config.C.HistoryToken()); err != nil {
 		logrus.Warnln("Tradingview Authentication failed (write):", err)
 	}
-	socket.SocketIsFuckingMe(context.TODO())
+	socket.Start(context.TODO())
 	///
 
 	routingTable := make(map[routingTableKey]pipeline.Stream[*types.Kline], len(request.Intervals)*len(request.Symbols))

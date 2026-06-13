@@ -104,8 +104,8 @@ type config struct {
 	histToken                 string
 	logSymbol                 string
 	logInterval               types.Interval
-	warmUpAlert               types.AlertsGet
-	alertImpactUrl            string
+	// warmUpAlert               types.AlertsGet
+	alertImpactUrl string
 }
 
 func SetupConfig() *config {
@@ -238,16 +238,16 @@ func SetupConfig() *config {
 	if symbolsSqlUrl == "" {
 		symbolsSqlUrl = c.sqlUrl
 	}
-	if alertGetUrl := os.Getenv("ALERT_GET_URL"); alertGetUrl != "" {
-		c.warmUpAlert = warmupAlertFn(alertGetUrl)
-	} else {
-		c.warmUpAlert = warmupAlertFn("https://back.tradecheck.co/api/doctor/price-alerts/unsend")
-	}
-	if alertImpactUrl := os.Getenv("ALERT_SEND_URL"); alertImpactUrl != "" {
-		c.alertImpactUrl = alertImpactUrl
-	} else {
-		c.alertImpactUrl = "https://back.tradecheck.co/api/doctor/price-alerts/impact/%v"
-	}
+	// if alertGetUrl := os.Getenv("ALERT_GET_URL"); alertGetUrl != "" {
+	// 	c.warmUpAlert = warmupAlertFn(alertGetUrl)
+	// } else {
+	// 	c.warmUpAlert = warmupAlertFn("https://back.tradecheck.co/api/doctor/price-alerts/unsend")
+	// }
+	// if alertImpactUrl := os.Getenv("ALERT_SEND_URL"); alertImpactUrl != "" {
+	// 	c.alertImpactUrl = alertImpactUrl
+	// } else {
+	// 	c.alertImpactUrl = "https://back.tradecheck.co/api/doctor/price-alerts/impact/%v"
+	// }
 
 	if testSymbol := os.Getenv("TEST_SYMBOL"); testSymbol != "" {
 		c.symbolCache = &types.SymbolsCache{
@@ -591,12 +591,12 @@ func (c *config) SubscriptionBufferSize() int    { return c.subscriptionBufferSi
 func (c *config) SubscriptionAggGoroutines() int { return c.subscriptionAggGoroutines }
 
 // Manager config
-func (c *config) WarmUpAlert() types.AlertsGet { return c.warmUpAlert }
-func (c *config) AlertImpactUrl() string       { return c.alertImpactUrl }
-func (c *config) HttpRetries() int             { return c.httpRetries }
-func (c *config) MaxDbConnections() int        { return c.maxDbConnections }
-func (c *config) MaxCuncurrentDownload() int   { return c.maxCuncurrentDownload }
-func (c *config) MaxWeight() uint64            { return c.maxWeight }
+// func (c *config) WarmUpAlert() types.AlertsGet { return c.warmUpAlert }
+func (c *config) AlertImpactUrl() string     { return c.alertImpactUrl }
+func (c *config) HttpRetries() int           { return c.httpRetries }
+func (c *config) MaxDbConnections() int      { return c.maxDbConnections }
+func (c *config) MaxCuncurrentDownload() int { return c.maxCuncurrentDownload }
+func (c *config) MaxWeight() uint64          { return c.maxWeight }
 
 // Emitter config
 func (c *config) MaxEmitterLength() int     { return c.maxEmitterLength }

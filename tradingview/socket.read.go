@@ -22,7 +22,7 @@ func (socket *Socket) ReadMessage() (messageType int, p []byte, err error) {
 // 	return socket.compCh
 // }
 
-func (socket *Socket) SocketIsFuckingMe(ctx context.Context) {
+func (socket *Socket) Start(ctx context.Context) {
 	socket.stardReadingOnce.Do(func() {
 		readStage := pipeline.SocketSourceFactory(socket)
 		errRegistererFunc := socket.errPipe.DefaultRegisterer()
